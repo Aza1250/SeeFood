@@ -13,6 +13,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     let API_KEY: String = "vMAR1awvUidlgWlK5flJeXonmcIZIwrbGobpaYY-BaHa"
     let version: String = "2018-07-19"
+    var classificationArray: [String] = []
 
     @IBOutlet var cameraButton: UIBarButtonItem!
     @IBOutlet var imageView: UIImageView!
@@ -45,7 +46,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             try? imageData?.write(to: fileURL)
             
             visualRecognition.classify(imagesFile: fileURL) { (classifiedImages) in
-                print(classifiedImages)
+                //print(classifiedImages)
+                let classes = classifiedImages.images.first!.classifiers.first!.classes
+                
+                self.classificationArray = []
+                
+                for index in 0..<classes.count {
+                    self.classificationArray.append(classes[index].className)
+                }
+                if self.classificationArray.contains("hotdog") {
+                    DispatchQueue.main.async {
+                        self.navigationItem.title = "Hotdog!" //It is not a good idea to update UI while being in the background thread (inside of a closure)
+                    }
+                }
+                else {
+                    DispatchQueue.main.async {
+                        self.navigationItem.title = "Not Hotdog :(" //That's why we need to get back to the main thread.
+                    }
+                }
             }
         }
         else {
@@ -57,7 +75,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
         
-        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.sourceType = .camera
         imagePicker.allowsEditing = false
         
         present(imagePicker, animated: true, completion: nil)
