@@ -18,15 +18,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iyg-Xu-Fv2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xYp-aP-3EV">
+                                <rect key="frame" x="139" y="550" width="96" height="54"/>
+                                <color key="backgroundColor" red="0.53725490200000003" green="0.96078431369999995" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="bKX-QV-ZDf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <state key="normal" title="Share">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="shareTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dT0-VT-dIf"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LBA-RU-xk2" userLabel="Static Hotdog Image">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Eve-Va-KZD"/>
+                                    <constraint firstAttribute="width" constant="240" id="FAu-Am-atX"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Iyg-Xu-Fv2" userLabel="User Chosen Image">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.83529411764705885" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="xYp-aP-3EV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="139" id="ADD-6n-WG7"/>
+                            <constraint firstItem="LBA-RU-xk2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DcF-YA-dTf"/>
                             <constraint firstItem="Iyg-Xu-Fv2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GH8-hg-Zkt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xYp-aP-3EV" secondAttribute="trailing" constant="140" id="R6s-sR-LJ2"/>
                             <constraint firstItem="Iyg-Xu-Fv2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Se2-qk-xdE"/>
                             <constraint firstItem="Iyg-Xu-Fv2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Tqo-Fy-kgr"/>
+                            <constraint firstItem="LBA-RU-xk2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UbA-MZ-6bo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xYp-aP-3EV" secondAttribute="bottom" constant="63" id="Vfb-pN-B0E"/>
                             <constraint firstItem="Iyg-Xu-Fv2" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xlH-1z-5s0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -41,6 +73,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="ixd-NA-OQs" id="7KV-E3-9yZ"/>
                         <outlet property="imageView" destination="Iyg-Xu-Fv2" id="Z5y-al-m8F"/>
+                        <outlet property="shareButton" destination="xYp-aP-3EV" id="8hL-d7-ZcB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
